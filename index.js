@@ -61,29 +61,3 @@ run();
 
 // https://stackoverflow.com/questions/41597538/node-cron-run-job-every-3-hours
 schedule.scheduleJob('0 0 */3 * * *', run);
-
-// // -----> TEST LOCAL <----- //
-// const run = () => {
-//   Promise.allSettled([mobileScrapper(URL_MOBILE_BG), sfaScrapper(URL_SFA)]).then((resp) => {
-//     const [mobile, sfa] = resp;
-
-//     let mobileHtmlContent = '';
-//     let sfaHtmlContent = '';
-
-//     if (mobile.status === 'fulfilled') {
-//       mobileHtmlContent = extractCarInfoAsHtml(mobile.value, URL_MOBILE_BG);
-//     } else {
-//       mobileHtmlContent = `<h3>${mobile.reason}</h3>`;
-//     }
-
-//     if (sfa.status === 'fulfilled') {
-//       sfaHtmlContent = extractCarInfoAsHtml(sfa.value, URL_SFA);
-//     } else {
-//       sfaHtmlContent = `<h3>${sfa.reason}</h3>`;
-//     }
-
-//     mailer(mobileHtmlContent + '</br></br></br>' + sfaHtmlContent).catch(console.error);
-//   });
-// };
-
-// run();
