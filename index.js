@@ -5,6 +5,7 @@ const mobileScrapper = require('./scrapers/mobile_bg/mobileBgScrapper');
 const sfaScrapper = require('./scrapers/sofiaFranceAuto/sfaScrapper');
 
 const URL_MOBILE_BG = 'https://euratec.mobile.bg/';
+// SFA links are valid only for 2 days. So maybe I should implement a headless browser to scrape.
 const URL_SFA_308 = 'https://occasion.sfa.bg/cars/search?slink=a9165e4c1b1a8388d86b6aa903ab80d1'; // 308
 const URL_SFA_508 = 'https://occasion.sfa.bg/cars/search?slink=1e7acee8c882e02e49847baff02e0bf4'; // 508
 
