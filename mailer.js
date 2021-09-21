@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer');
 
+const { mailAuth, mailSend } = require('./configs/configs_gitignore');
+
 const mailer = async (html) => {
 
   // create reusable transporter object using the default SMTP transport
@@ -8,15 +10,15 @@ const mailer = async (html) => {
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: '', // generated ethereal user
-      pass: '', // generated ethereal password
+      user: mailAuth.user, // generated ethereal user
+      pass: mailAuth.pass, // generated ethereal password
     },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '', // sender address
-    to: '', // list of receivers
+    from: mailSend.from, // sender address
+    to: mailSend.to, // list of receivers
     subject: 'cars list', // Subject line
     text: 'cars list', // plain text body
     html
