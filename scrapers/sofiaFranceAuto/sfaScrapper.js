@@ -1,21 +1,20 @@
-const axios = require('axios');
-const cheerio = require('cherio');
 
-module.exports = async (url) => axios.get(url).then((resp) => {
+const cheerio = require('cherio');
+const fs = require('fs');
+const path = require('path');
+
+module.exports = async (carModel) => {
   const carsObject = {
     title: '',
     cars: [],
   };
 
-  let $ = cheerio.load(resp.data, { decodeEntities: false,  });
+  let $ = cheerio.load(fs.readFileSync(path.join(__dirname + `/../sfaPuppeteer/${carModel}-sample.html`)));
 
   const carBoxes = $('div[class="carBox  "]').toArray();
   const carBoxesLength = carBoxes.length;
 
-  const titleText = `>>> ${carBoxesLength} car(s) in Sofia France Auto <<<`;
-  carsObject.title = titleText;
-
-  console.log(titleText);
+  console.log(`>>> ${carBoxesLength} car(s) in Sofia France Auto <<<`);
   console.log('-----------------------------------');
 
   carBoxes.forEach((carBox, i) => {
@@ -34,10 +33,9 @@ module.exports = async (url) => axios.get(url).then((resp) => {
   });
 
   console.log('-----------------------------------');
-  console.log('-----------------------------------');
 
   return carsObject;
-}).catch(e => console.log('ERROR', e));
+};
 
 
 // // -----> TEST LOCAL WITH SAMPLE.HTML <----- //

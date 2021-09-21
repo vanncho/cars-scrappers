@@ -26,4 +26,3 @@ const mailer = async (html) => {
 };
 
 module.exports = mailer;
-
